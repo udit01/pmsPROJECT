@@ -20,7 +20,7 @@ def QRCodeCreate(request):
             #to do something with new entry's filds and output a hash
             new_entry.save()
 
-            return HttpResponseRedirect('book/thanks')
+            return HttpResponseRedirect('thanks')
 
     else:
         form=QRCodeForm()
