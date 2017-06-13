@@ -26,7 +26,9 @@ SECRET_KEY = '@i3rad^f_a598n7ep=7%8n2=goa(5kya0js!yr9@zq&1=uv2c9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'pms00.herokuapp.com']
+ALLOWED_HOSTS = [u'pms00.herokuapp.com',
+                 u'127.0.0.1'
+                 ]
 
 TIME_INPUT_FORMATS = ('%I:%M %p',)
 
