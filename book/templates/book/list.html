@@ -1,0 +1,21 @@
+<h1>List of QR codes registered</h1>
+
+<table border="black 2px" cellpadding="5px">
+    <tr>
+        <th>Name</th>
+        <th>     Date of arrival   </th>
+        <th>     Time of arrival   </th>
+        <th>     Vehicle number    </th>
+        <th>     Email id          </th>
+    </tr>
+    {% for item in qrs %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>  {{ item.date    }}</td>
+        <td>  {{ item.time  }} </td>
+        <td>  {{ item.vehicleNumber }}</td>
+        <td>  {{ item.emailid     }}  </td>
+    </tr>
+    {% endfor %}
+</table>
+

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Book{% endblock %}</title>
+    <!--<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'book/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy">
+    <link rel="stylesheet" type="text/css" href="{% static 'book/style.css' %}"  >
+
+    <script src="{% static 'book/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'book/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'book/js/main.js' %}"></script>
+
+</head>
+
+<body>
+
+{% block body %}
+
+{% endblock %}
+
+</body>
+</html>
