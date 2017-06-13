@@ -9,7 +9,7 @@ def QRCodesView(request):  #retreive qrcodes, render template and display
     # args={}
     data=QRcode.objects.all()
     return render(request, 'book/list.html', {'qrs' : data})
-
+z
 def QRCodeCreate(request):
     if request.method=='POST':
         form=QRCodeForm(request.POST)
