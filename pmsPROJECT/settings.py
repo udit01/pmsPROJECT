@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'oAuth.apps.OauthConfig',
     'book.apps.BookConfig',
 ]
 
@@ -107,7 +107,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-AUTH_USER_MODEL = 'book.User'
+
+#dependencies = [
+#    ('book', '__first__'),
+#    ('oAuth', '0002_auto_20151029_1040'),
+#]
+#AUTH_USER_MODEL = 'book.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

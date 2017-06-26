@@ -1,14 +1,11 @@
+from __future__ import unicode_literals
 from django.db import models
 from django import forms
 import django.utils.timezone
+from oAuth.models import User
 import datetime
-from django.contrib.auth.models import AbstractUser
 # Create your models here.
-class User(AbstractUser):
-    # password=models.CharField(max_length=100,blank=False)
-    # username=models.CharField(max_length=100,blank=False)
-    def __str__(self):
-        return self.username
+
 
 
 class QRcode(models.Model):
@@ -34,8 +31,4 @@ class QRCodeForm(forms.ModelForm):
         }
         fields = ['name' , 'duration' , 'emailid' , 'date','time' , 'vehicleNumber' ]
 
-class LoginForm(forms.ModelForm):
 
-    class Meta:
-        model=User
-        fields=['username','password']

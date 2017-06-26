@@ -7,5 +7,4 @@ urlpatterns = [
     url(r'^$', views.QRCodeCreate,name='add'),
     url(r'^list/$',views.QRCodesView,name='list'),
     url(r'^thanks/$',views.success),
-    url(r'^login/',views.LoginPage),
 ]

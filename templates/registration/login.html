@@ -1,10 +1,12 @@
-<h2>Login</h2>
- <form method="post">
-   {% csrf_token %}
-   {{ form.as_p }}
-   <button type="submit">Login</button>
- </form>
+{% extends 'book/base.html' %}
 
-<form action="/oauthlogin" method="GET">
-<button id="logOut" type="submit"> LOGIN with Kerberos </button>
-</form>
+{% block title %}Login{% endblock %}
+
+{% block body %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}

@@ -6,13 +6,6 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 
-@login_required(login_url = '/login')
-def home(request):
-    login_url = '/login'
-    REDIRECT_FIELD_NAME = '/login'
-    # data=QRcode.objects.all()
-    return render(request, 'registration/home.html')
-
-
-def oauthLogin(request):
-    pass
+def LogoutPage(request):
+    #set empty cookie
+    return render(request,'registration/logged_out.html')
