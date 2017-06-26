@@ -7,12 +7,14 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from decorators import *
 
+@permission_required(category='admin')
 @login_required(login_url='/login')
 def QRCodesView(request):  #retreive qrcodes, render template and display
     # args={}
     data=QRcode.objects.all()
     return render(request, 'book/list.html', {'qrs' : data})
 
+@permission_required(category='client')
 @login_required(login_url='/login')
 def QRCodeCreate(request):
     if request.method=='POST':

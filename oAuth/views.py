@@ -9,13 +9,19 @@ from django.contrib import messages
 # if login is successful, set cookie and redirect to 'book/'
 
 def LoginPage(request):
+
     if request.method=='POST':
         form=LoginForm(request.POST)
         if form.is_valid():
             new_login=form.save(commit=False)
             #hash the password before checking with the database
             if User.objects.filter(username=new_login.username,password=new_login.password).exists():
-                response=redirect('/book/')
+                redirect_url = request.session.get('goto', '/book/') #which url to goto after login
+                try:
+                    del request.session['goto']
+                except KeyError:
+                    pass
+                response=redirect(redirect_url)
                 response.set_cookie('userid',new_login.username)        #set userid cookie
                 return response
             else:
