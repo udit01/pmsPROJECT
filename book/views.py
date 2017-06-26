@@ -6,6 +6,9 @@ from oAuth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from decorators import *
+import qrcode
+from qrcode.image.pure import PymagingImage
+from django.http import HttpResponse
 
 @permission_required(category='admin')
 @login_required(login_url='/login')
@@ -22,12 +25,15 @@ def QRCodeCreate(request):
         if form.is_valid():
             #add record to database
             new_entry=form.save(commit=False)
-            new_entry.qrcodeContent = "xyz"
+            new_entry.qrcodeContent = new_entry.name
             new_entry.username=User.objects.get(username=request.COOKIES.get('userid'))
             #to do something with new entry's fields and output a hash
             new_entry.save()
-
-            return HttpResponseRedirect('thanks')
+            response = HttpResponse(content_type="image/png")
+            img = qrcode.make(new_entry.qrcodeContent)
+            img.save(response,"PNG")
+            return response
+            #return HttpResponseRedirect('thanks')
 
     else:
         form=QRCodeForm()
