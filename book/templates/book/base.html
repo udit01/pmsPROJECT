@@ -9,20 +9,30 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'book/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy">
-    <link rel="stylesheet" type="text/css" href="{% static 'book/style.css' %}"  >
+    <link rel="stylesheet" type="text/css" href="{% static 'book/style.css' %}">
     <!-- <link rel="stylesheet" type="text/css" href="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css">!-->
+    <link rel="stylesheet" type="text/css" href="{% static 'book/jquery.datetimepicker.css' %}"/>
+
+    <style type="text/css">
+
+        .custom-date-style {
+            background-color: red !important;
+        }
+
+    </style>
 
     <script src="{% static 'book/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'book/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'book/js/main.js' %}"></script>
+
     <!--<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>!-->
     <script>
-            {% if messages %}
-                {% for message in messages %}
-                    alert('{{message}}');
-                {% endfor %}
-            {% endif %}
-     </script>
+        {% if messages %}
+            {% for message in messages %}
+                alert('{{message}}');
+            {% endfor %}
+        {% endif %}
+    </script>
 </head>
 
 <body>
@@ -35,17 +45,84 @@
 
 {% endblock %}
 
-<script>
-  $(function() {
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "1900:2012",
-      // You can put more options here.
+<script src="{% static 'book/jquery.datetimepicker.full.js' %}"></script>
 
-    });
-  });
- </script>
+<script>
+    {% block script %}
+
+    {% endblock %}
+</script>
+<script>/*
+ window.onerror = function(errorMsg) {
+ $('#console').html($('#console').html()+'<br>'+errorMsg)
+ }*/
+
+$.datetimepicker.setLocale('en');
+
+$('#datetimepicker_format').datetimepicker({
+    value: '2015/04/15 05:03',
+    format: $("#datetimepicker_format_value").val()
+});
+console.log($('#datetimepicker_format').datetimepicker('getValue'));
+
+$("#datetimepicker_format_change").on("click", function (e) {
+    $("#datetimepicker_format").data('xdsoft_datetimepicker').setOptions({format: $("#datetimepicker_format_value").val()});
+});
+$("#datetimepicker_format_locale").on("change", function (e) {
+    $.datetimepicker.setLocale($(e.currentTarget).val());
+});
+
+$('#datetimepicker').datetimepicker({
+    dayOfWeekStart: 1,
+    lang: 'en',
+    disabledDates: ['1986/01/08', '1986/01/09', '1986/01/10'],
+    startDate: '1986/01/05'
+});
+$('#datetimepicker').datetimepicker({value: '2015/04/15 05:03', step: 10});
+
+$('.some_class').datetimepicker();
+
+$('#default_datetimepicker').datetimepicker({
+    formatTime: 'H:i',
+    formatDate: 'd.m.Y',
+    //defaultDate:'8.12.1986', // it's my birthday
+    defaultDate: '+03.01.1970', // it's my birthday
+    defaultTime: '10:00',
+    timepickerScrollbar: false
+});
+
+$('#datetimepicker_mask').datetimepicker({
+    mask: '9999/19/39 29:59'
+});
+
+$('#datetimepicker1').datetimepicker({
+    datepicker: false,
+    format: 'H:i',
+    step: 5
+});
+$('#datetimepicker2').datetimepicker({
+    yearOffset: 22,
+    lang: 'ch',
+    timepicker: false,
+    format: 'd/m/Y',
+    formatDate: 'Y/m/d',
+    minDate: '-1970/01/02', // yesterday is minimum date
+    maxDate: '+1970/01/02' // and tommorow is maximum date calendar
+});
+var logic = function (currentDateTime) {
+    if (currentDateTime && currentDateTime.getDay() == 6) {
+        this.setOptions({
+            minTime: '11:00'
+        });
+    } else
+        this.setOptions({
+            minTime: '8:00'
+        });
+};
+var dateToDisable = new Date();
+dateToDisable.setDate(dateToDisable.getDate() + 2);
+
+</script>
 
 </body>
 </html>
