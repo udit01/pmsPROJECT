@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>QRCode</title>
-    Here is the QRCode!
-</head>
-<body>
-<img src=qrcode/> </img>
-</body>
-</html>
+{% extends 'book/base.html' %}
+
+{% block title %}QRCODE{% endblock %}
+
+{% block body %}
+    HERE IS THE QR CODE
+    <br>
+    <div style="margin:0 auto;">
+        <img src=qrcode/ > </img>
+    </div>
+{% endblock %}

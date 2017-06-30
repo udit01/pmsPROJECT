@@ -4,4 +4,13 @@
 {% block body %}
 <!-- Not required as we have passed / as kwargs -->
 <h1>YOU ARE LOGGED OUT!</h1>
+
+    <form action="/login" method="get">
+    <button type="submit">LOGIN</button>
+</form>
+
+{% endblock %}
+
+{% block script %}
+    $('#logoutButton').css('display','none');
 {% endblock %}

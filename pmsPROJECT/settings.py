@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [u'pms00.herokuapp.com',
 
 MEDIA_URL='/media/'
 
-TIME_INPUT_FORMATS = ('%I:%M %p',)
+TIME_INPUT_FORMATS = ('%I:%M',)
 
 # Application definition
 

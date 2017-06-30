@@ -12,7 +12,7 @@ from django.http import HttpResponse
 
 
 @login_required(login_url='/login')
-@permission_required(category='admin')
+@permission_required(category='AD')
 def QRCodesView(request):  #retreive qrcodes, render template and display
     # args={}
     data=QRcode.objects.all()
@@ -20,7 +20,7 @@ def QRCodesView(request):  #retreive qrcodes, render template and display
 
 
 @login_required(login_url='/login')
-@permission_required(category='client')
+@permission_required(category='CL')
 def QRCodeCreate(request):
     if request.method=='POST':
         form=QRCodeForm(request.POST)

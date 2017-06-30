@@ -20,7 +20,7 @@ def login_required(login_url='/login'):
         return wrapper
     return actual_decorator
 
-def permission_required(category='admin',login_url='/login'):
+def permission_required(category='AD',login_url='/login'):
     def actual_decorator(func):
         def wrapper(*args,**kwargs):
             request=args[0]
@@ -30,7 +30,7 @@ def permission_required(category='admin',login_url='/login'):
             if user is not None:
                 userCategory=UserProfile.objects.get(user=user).type
                 print userCategory
-                if(userCategory=='admin' or userCategory==category):
+                if(userCategory=='AD' or userCategory==category):
                     allowed=True
             if(allowed):
                 return func(*args,**kwargs)
