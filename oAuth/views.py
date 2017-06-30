@@ -25,7 +25,7 @@ def LoginPage(request):
                 response.set_cookie('userid',new_login.username)        #set userid cookie
                 return response
             else:
-                messages.error(request,"Username-password do not match")    #send error message
+                messages.error(request,"Username or password does not match")    #send error message
     else:
         form=LoginForm()
 

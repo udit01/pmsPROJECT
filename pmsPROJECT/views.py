@@ -5,9 +5,8 @@ from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 
-
 def LogoutPage(request):
-    #set empty cookie
-    response=render(request,'registration/logged_out.html')
-    response.set_cookie('userid','')
+
+    response = render(request,'registration/logged_out.html')
+    response.set_cookie('userid', '')  # set blank cookie
     return response
