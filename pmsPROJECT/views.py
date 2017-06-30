@@ -8,4 +8,6 @@ from django.contrib import messages
 
 def LogoutPage(request):
     #set empty cookie
-    return render(request,'registration/logged_out.html')
+    response=render(request,'registration/logged_out.html')
+    response.set_cookie('userid','')
+    return response
