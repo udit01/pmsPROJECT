@@ -10,15 +10,17 @@ import qrcode
 from qrcode.image.pure import PymagingImage
 from django.http import HttpResponse
 
-@permission_required(category='admin')
+
 @login_required(login_url='/login')
+@permission_required(category='admin')
 def QRCodesView(request):  #retreive qrcodes, render template and display
     # args={}
     data=QRcode.objects.all()
     return render(request, 'book/list.html', {'qrs' : data})
 
-@permission_required(category='client')
+
 @login_required(login_url='/login')
+@permission_required(category='client')
 def QRCodeCreate(request):
     if request.method=='POST':
         form=QRCodeForm(request.POST)
