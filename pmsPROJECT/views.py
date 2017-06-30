@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 def LogoutPage(request):
+
     response = render(request,'registration/logged_out.html')
     response.set_cookie('userid', '')  # set blank cookie
     return response
-
