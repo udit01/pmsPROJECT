@@ -9,4 +9,4 @@ myvenv
 .DS_Store
 
 .idea/
-
+db.sqlite3
