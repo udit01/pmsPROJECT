@@ -17,6 +17,7 @@ class QRcode(models.Model):
     duration=models.IntegerField(blank=False)
     vehicleNumber=models.CharField(max_length=100,blank=True)
     username=models.ForeignKey(User,default=2)
+    Place_to_visit=models.CharField(max_length=100,blank=False)
     def __str__(self):
         return self.emailid
 
@@ -26,9 +27,9 @@ class QRCodeForm(forms.ModelForm):
 
     class Meta:
         model=QRcode
-        widgets = {
-            'date': forms.DateInput(attrs={'class': 'datepicker'}),
-        }
-        fields = ['name' , 'duration' , 'emailid' , 'date','time' , 'vehicleNumber' ]
+        #widgets = {
+         #   'date': forms.DateInput(attrs={'class': 'datepicker'}),
+        #}
+        fields = ['name' , 'Place_to_visit','duration' , 'emailid' , 'date','time' , 'vehicleNumber' ]
 
 

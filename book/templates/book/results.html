@@ -5,6 +5,7 @@
         <th>     Date of arrival   </th>
         <th>     Time of arrival   </th>
         <th>     Vehicle number    </th>
+        <th>     Place to visit    </th>
         <th>     Email id          </th>
     </tr>
     {% for item in qrs %}
@@ -13,6 +14,7 @@
         <td>  {{ item.date    }}</td>
         <td>  {{ item.time  }} </td>
         <td>  {{ item.vehicleNumber }}</td>
+        <td>  {{ item.Place_to_visit }}</td>
         <td>  {{ item.emailid     }}  </td>
     </tr>
     {% endfor %}
