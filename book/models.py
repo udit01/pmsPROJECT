@@ -23,8 +23,7 @@ class QRcode(models.Model):
 
 
 class QRCodeForm(forms.ModelForm):
-    # abc=models.CharField(max_length=250,blank=False)
-
+    duration=forms.CharField(label='Duration (hrs):')
     class Meta:
         model=QRcode
         #widgets = {
