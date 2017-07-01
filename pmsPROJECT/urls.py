@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^book/', include('book.urls'), name='book'),
     url(r'^login/',include('oAuth.urls'), name='login'),
     url(r'^logout/',views.LogoutPage , name='logout'),
-    url(r'^',book.views.QRCodeCreate),
+    url(r'^$',book.views.QRCodeCreate),
 ]
