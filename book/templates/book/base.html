@@ -46,13 +46,61 @@
 
 <body>
 
-<form action="/logout" method="get">
+<!--<form action="/logout" method="get">
     <button type="submit" id="logoutButton">LOGOUT</button>
-</form>
+</form>-->
+<div id="mySidenav" class="sidenav">
+    <ul class='nav'>
+        <li class='navli'> <a href="/book/">Book</a></li>
+        <li class='navli'><a  href="/book/list/">View</a></li>
+        <li class='navli'><a href="/logout">Logout</a></li>
+     </ul>
+</div>
+<style type="text/css">
+    .sidenav {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    left: 0;
+    text-align: left;
+    background-color: Grey;
+    overflow-x: hidden; /* Disable horizontal scroll */ */
+    padding-top: 10px; /* Place content 10px from the top */
+    float: left;
+}*/
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width:100px;
+}
+.navli a {
+    padding: 8px 16px;
+    font-size: 15px;
+    color: #000;
+    display: block;
+}
 
+.navli a:hover{
+    background-color: #555;
+    color: black;
+
+}
+
+#rest{
+ position: relative;
+ right: -120px;
+}
+
+</style>
+<div id="rest">
 {% block body %}
 
 {% endblock %}
+</div>
+
 
 <script src="{% static 'book/jquery.datetimepicker.full.js' %}"></script>
 
