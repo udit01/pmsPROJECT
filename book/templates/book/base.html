@@ -2,11 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<header>
     <meta charset="UTF-8">
     <title>{% block title %}  {% endblock %}</title>
     <!--<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>-->
-
+    <div class="Site_title" >
+    <h1> IITD Parking Management System</h1>
+    </div>
     <link rel="stylesheet" type="text/css" href="{% static 'book/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy">
     <link rel="stylesheet" type="text/css" href="{% static 'book/style.css' %}">
@@ -14,11 +16,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'book/jquery.datetimepicker.css' %}"/>
 
     <style type="text/css">
-
         .custom-date-style {
             background-color: red !important;
         }
-
+        .Site_title
+            {
+                font-family:    Courier New;
+                font-size:      35px;
+                font-weight:    bold;
+                position: relative;
+                top: 20px;
+            }
     </style>
 {% block style %}
 {% endblock %}
@@ -34,7 +42,7 @@
             {% endfor %}
         {% endif %}
     </script>
-</head>
+</header>
 
 <body>
 
