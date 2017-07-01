@@ -1,12 +1,37 @@
 {% extends 'book/base.html' %}
+{% load static %}
 
-{% block title %}Login{% endblock %}
+{% block title %}QRCodes List{% endblock %}
+{% block style %}
+<style type="text/css">
 
+        td{
+            padding:15px;
+            font-size:16px;
+            text-align:center;
+
+            }
+        th{
+            padding:15px;
+            font-size:20px;
+            text-align:center;
+            }
+         table{
+            border:black 3px solid;
+            margin:30px auto;
+         }
+
+    </style>
+{% endblock %}
 {% block body %}
 
 <h1>List of QR codes registered</h1>
 
-<table border="black 2px" cellpadding="5px">
+<form action="/create_post/" method="POST" id="post-form">
+    <button type="submit" id="searchButton">TEST</button>
+</form>
+
+<table border="black 4px solid" >
     <tr>
         <th>Name</th>
         <th>     Date of arrival   </th>
@@ -26,3 +51,9 @@
 </table>
 
 {% endblock %}
+
+{% block script %}
+<script src="{% static 'book/scripts/main.js' %}"></script>
+{% endblock %}
+
+

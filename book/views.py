@@ -12,7 +12,7 @@ from django.http import HttpResponse
 
 
 @login_required(login_url='/login')
-@permission_required(category='AD')
+@permission_required(category='AD') #order of decorators is important
 def QRCodesView(request):  #retreive qrcodes, render template and display
     # args={}
     data=QRcode.objects.all()
@@ -31,12 +31,8 @@ def QRCodeCreate(request):
             new_entry.username=User.objects.get(username=request.COOKIES.get('userid'))
             #to do something with new entry's fields and output a hash
             new_entry.save()
-            #response = HttpResponse(content_type="image/png")
             request.session['qrcode_content']=new_entry.qrcodeContent
-            #img.save(response,"PNG")
             return render(request,'book/qrcode.html')
-            #return HttpResponseRedirect('thanks')
-
     else:
         form=QRCodeForm()
 
