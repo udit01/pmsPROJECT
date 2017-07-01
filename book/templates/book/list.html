@@ -20,40 +20,38 @@
             border:black 3px solid;
             margin:30px auto;
          }
+         div.note {
+         padding: 15px;
+         background: #FFFFD4;
+         border: 1px solid #DDDDB2;
+         }
+         div.margin {
+         margin-top: 20px;
+         }
 
     </style>
 {% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="{% static 'book/scripts/main.js' %}"></script>
+{% endblock %}
+
 {% block body %}
 
 <h1>List of QR codes registered</h1>
 
-<form action="/create_post/" method="POST" id="post-form">
-    <button type="submit" id="searchButton">TEST</button>
-</form>
-
-<table border="black 4px solid" >
-    <tr>
-        <th>Name</th>
-        <th>     Date of arrival   </th>
-        <th>     Time of arrival   </th>
-        <th>     Vehicle number    </th>
-        <th>     Email id          </th>
-    </tr>
-    {% for item in qrs %}
-    <tr>
-        <td>{{ item.name }}</td>
-        <td>  {{ item.date    }}</td>
-        <td>  {{ item.time  }} </td>
-        <td>  {{ item.vehicleNumber }}</td>
-        <td>  {{ item.emailid     }}  </td>
-    </tr>
-    {% endfor %}
-</table>
+<!-- <form action="/create_post/" method="GET" id="post-form">-->
+<input type="text" name="username" id="id_username" maxlength="100" >
+<button id='searchButton' type=”submit”>Search</button>
+<!--</form>-->
+<div class=”margin”>
+<!--<span id=”spinner”><img src=”http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif”/></span>-->
+<div id='results'></div>
+</div>
 
 {% endblock %}
 
-{% block script %}
-<script src="{% static 'book/scripts/main.js' %}"></script>
-{% endblock %}
+
 
 

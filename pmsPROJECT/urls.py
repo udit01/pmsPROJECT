@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 import views
+import book
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^book/', include('book.urls'), name='book'),
     url(r'^login/',include('oAuth.urls'), name='login'),
     url(r'^logout/',views.LogoutPage , name='logout'),
+    url(r'^',book.views.QRCodeCreate),
 ]

@@ -9,6 +9,9 @@ from decorators import *
 import qrcode
 from qrcode.image.pure import PymagingImage
 from django.http import HttpResponse
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
 
 
 @login_required(login_url='/login')
@@ -37,6 +40,20 @@ def QRCodeCreate(request):
         form=QRCodeForm()
 
     return render(request,'book/registration_form.html',{'form':form})
+
+def ajax_user_search(request):
+    if request.is_ajax():
+        q=request.GET.get('username')
+        print (q)
+        results=[]
+        if q is not None:
+            results=QRcode.objects.filter(username__username=q)
+            #print (len(results))
+        else:
+            results = QRcode.objects.all()
+        html=render_to_string('book/results.html',{'qrs':results})
+        return HttpResponse(html)
+
 
 def QRCodeImage(request):
     img = qrcode.make(request.session['qrcode_content'])
