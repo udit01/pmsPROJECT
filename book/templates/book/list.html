@@ -34,7 +34,9 @@
          div.margin {
          margin-top: 20px;
          }
-
+         /*#sub{
+         position: fixed
+         }*/
     </style>
 {% endblock %}
 
@@ -44,14 +46,15 @@
 {% endblock %}
 
 {% block body %}
-
+<div id="sub">
 <h1>List of QR codes registered</h1>
 
 <!-- <form action="/create_post/" method="GET" id="post-form">-->
 <input type="text" name='place' id='place' maxlength="100" >
 <button id='searchButton' type=”submit”>Filter by Place</button>
+</div>
 <!--</form>-->
-<div class=”margin”>
+    <div class=”margin”>
 <!--<span id=”spinner”><img src=”http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif”/></span>-->
 <div id='results'></div>
 </div>
