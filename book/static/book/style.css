@@ -3,10 +3,11 @@ body{
 }
 
  header {
-    height: 80px;
+    height: 100px;
     background: LightGreen;
-    position: relative;
-        top: -20px;
+    position: fixed;
+    top: -20px;
+    width: 100%
   }
 
 ul.errorlist {
