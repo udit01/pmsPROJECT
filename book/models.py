@@ -10,8 +10,8 @@ import datetime
 
 class QRcode(models.Model):
     emailid = models.EmailField(blank=False)
-    qrcodeContent=models.CharField(max_length=250,blank=True)
-    name=models.CharField(max_length=250,blank=False)
+    qrcodeContent=models.CharField(max_length=1000,blank=True)
+    name=models.CharField(max_length=100,blank=False)
     date=models.DateField(blank=False)
     time=models.TimeField(blank=False)
     duration=models.IntegerField(blank=False)
@@ -24,6 +24,7 @@ class QRcode(models.Model):
 
 class QRCodeForm(forms.ModelForm):
     duration=forms.CharField(label='Duration (hrs):')
+    time = forms.TimeField(input_formats=('%H:%M', '%I:%M %p'))
     class Meta:
         model=QRcode
         #widgets = {

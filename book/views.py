@@ -11,7 +11,7 @@ from qrcode.image.pure import PymagingImage
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-
+import json
 
 
 @login_required(login_url='/login')
@@ -30,8 +30,11 @@ def QRCodeCreate(request):
         if form.is_valid():
             #add record to database
             new_entry=form.save(commit=False)
-            new_entry.qrcodeContent = new_entry.name
             new_entry.username=User.objects.get(username=request.COOKIES.get('userid'))
+            content = {'name': new_entry.name, 'Place to visit': new_entry.Place_to_visit,
+                       'VehicleNumber': new_entry.vehicleNumber, 'Booked by': request.COOKIES.get('userid'),'Date':str(new_entry.date),
+                       'Time':str(new_entry.time), 'Duration(hrs)':new_entry.duration,}
+            new_entry.qrcodeContent = json.dumps(content)
             #to do something with new entry's fields and output a hash
             new_entry.save()
             request.session['qrcode_content']=new_entry.qrcodeContent
@@ -46,7 +49,7 @@ def ajax_user_search(request):
         q=request.GET.get('username')
         print (q)
         results=[]
-        if q is not None:
+        if len(q) is not 0:
             results=QRcode.objects.filter(username__username=q)
             #print (len(results))
         else:
