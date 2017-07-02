@@ -22,7 +22,7 @@ def LoginPage(request):
                 except KeyError:
                     pass
                 response=redirect(redirect_url)
-                response.set_cookie('userid',new_login.username)        #set userid cookie
+                request.session['userid']=new_login.username        #set userid cookie
                 return response
             else:
                 messages.error(request,"Username or password does not match")    #send error message

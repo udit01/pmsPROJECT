@@ -4,11 +4,11 @@ $(document).ready(function () {
         //    alert(data);
         //});
         $('#searchButton').click(function(event){
-        var q = $("#id_username").val();
+        var q = $("#place").val();
         console.log(q);
         $.ajax({
                 type: "GET",
-                data: {'username':q},
+                data: {'place':q},
                 url: '/book/ajax/search',
                 success: function(data) {
                     $("#results").html(data);

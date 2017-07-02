@@ -30,9 +30,9 @@ def QRCodeCreate(request):
         if form.is_valid():
             #add record to database
             new_entry=form.save(commit=False)
-            new_entry.username=User.objects.get(username=request.COOKIES.get('userid'))
+            new_entry.username=User.objects.get(username=request.session['userid'])
             content = {'name': new_entry.name, 'Place to visit': new_entry.Place_to_visit,
-                       'VehicleNumber': new_entry.vehicleNumber, 'Booked by': request.COOKIES.get('userid'),'Date':str(new_entry.date),
+                       'VehicleNumber': new_entry.vehicleNumber, 'Booked by': request.session['userid'],'Date':str(new_entry.date),
                        'Time':str(new_entry.time), 'Duration(hrs)':new_entry.duration,}
             new_entry.qrcodeContent = json.dumps(content)
             #to do something with new entry's fields and output a hash
@@ -46,11 +46,11 @@ def QRCodeCreate(request):
 
 def ajax_user_search(request):
     if request.is_ajax():
-        q=request.GET.get('username')
+        q=request.GET.get('place')
         print (q)
         results=[]
         if len(q) is not 0:
-            results=QRcode.objects.filter(username__username=q)
+            results=QRcode.objects.filter(username__username=request.session['userid'],Place_to_visit__icontains=q)
             #print (len(results))
         else:
             results = QRcode.objects.all()

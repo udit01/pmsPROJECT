@@ -6,7 +6,11 @@ def login_required(login_url='/login'):
     def actual_decorator(func):
         def wrapper(*args,**kwargs):
             request=args[0]
-            username=request.COOKIES.get('userid')
+            try:
+                username=request.session['userid']
+            except:
+                username=''
+                request.session['userid']=''
             logged_in=False
             if User.objects.filter(username=username).exists():
                 logged_in=True
@@ -24,7 +28,11 @@ def permission_required(category='AD',login_url='/login'):
     def actual_decorator(func):
         def wrapper(*args,**kwargs):
             request=args[0]
-            username=request.COOKIES.get('userid')
+            try:
+                username=request.session['userid']
+            except:
+                username=''
+                request.session['userid']=''
             allowed=False
             user=User.objects.get(username=username)
             if user is not None:
