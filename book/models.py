@@ -24,6 +24,7 @@ class QRcode(models.Model):
 
 class QRCodeForm(forms.ModelForm):
     duration=forms.CharField(label='Duration (hrs):')
+    date=forms.DateField(input_formats=(('%d/%m/%Y','%Y/%m/%d')))
     time = forms.TimeField(input_formats=('%H:%M', '%I:%M %p'))
     class Meta:
         model=QRcode
