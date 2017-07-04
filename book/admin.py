@@ -5,7 +5,7 @@ from oAuth.models import UserProfile,User
 
 class CustomAdmin(admin.ModelAdmin):
     def __init__(self, model, admin_site):
-        self.list_display = [field.name for field in model._meta.fields if field.name != "id"]
+        self.list_display = [field.name for field in model._meta.fields ]#if field.name != "id"]
         super(CustomAdmin, self).__init__(model, admin_site)
 
 

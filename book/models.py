@@ -18,6 +18,15 @@ class QRcode(models.Model):
     vehicleNumber=models.CharField(max_length=100,blank=True)
     username=models.ForeignKey(User,default=2)
     Place_to_visit=models.CharField(max_length=100,blank=False)
+    ACTIVE='AC'
+    GATEPASS='GP'
+    PARKED='PA'
+    EXITED='EX'
+    INACTIVE='IN'
+    VEHICLE_STATUS_CHOICES=((ACTIVE,'Active'),(GATEPASS,'Entered Campus'),(PARKED,'Vehicle Parked'),
+                            (EXITED,'Exited Campus'),(INACTIVE,'Inactive'),
+                            )
+    vehicleStatus=models.CharField(max_length=2,choices=VEHICLE_STATUS_CHOICES,default='AC')
     def __str__(self):
         return self.emailid
 
